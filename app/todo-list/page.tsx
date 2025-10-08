@@ -22,7 +22,7 @@ export default function TodoApp() {
   const toggleTodo = (id: number) => {
     setTodos(
       todos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+        (todo.id === id ? { ...todo, completed: !todo.completed } : todo)
       )
     )
   }
