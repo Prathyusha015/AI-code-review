@@ -14,7 +14,8 @@ export default function TodoApp() {
 
   const addTodo = () => {
     if (!task.trim()) return
-    const newTodo: Todo = { id: Date.now(), text: task.trim(), completed: false }
+    // BUG for demo: All todos get the same ID
+    const newTodo: Todo = { id: 1, text: task.trim(), completed: false }
     setTodos([...todos, newTodo])
     setTask('')
   }
@@ -22,7 +23,7 @@ export default function TodoApp() {
   const toggleTodo = (id: number) => {
     setTodos(
       todos.map((todo) =>
-        (todo.id === id ? { ...todo, completed: !todo.completed } : todo)
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
       )
     )
   }
@@ -35,7 +36,7 @@ export default function TodoApp() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 flex items-center justify-center p-6">
       <div className="w-full max-w-md bg-white rounded-3xl shadow-xl p-6">
         <h2 className="text-3xl font-bold mb-6 text-center text-indigo-700">
-          📝 Todo List
+          📝 Todo List (Buggy Demo)
         </h2>
 
         <div className="flex gap-3 mb-6">
@@ -60,7 +61,7 @@ export default function TodoApp() {
           <ul className="space-y-3">
             {todos.map((todo) => (
               <li
-                key={todo.id}
+                key={todo.id} // BUG: duplicate key
                 className="flex justify-between items-center bg-indigo-50 rounded-xl p-3 shadow-sm hover:shadow-md transition-all duration-150"
               >
                 <span
