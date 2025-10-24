@@ -1,7 +1,7 @@
+
 "use client";
 
 import { useState, useEffect } from "react";
-
 
 const cardValues = ["🍎", "🍌", "🍇", "🍓"];
 
@@ -29,8 +29,7 @@ export default function FlipCardsPage() {
         setMatched([...matched, firstId, secondId]);
       }
       setTimeout(() => setFlipped([]), 1000);
-    }
-  };
+    }  };
 
   return (
     <div style={{ textAlign: "center", marginTop: "50px" }}>
