@@ -36,7 +36,7 @@ export default function TodoApp() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 flex items-center justify-center p-6">
       <div className="w-full max-w-md bg-white rounded-3xl shadow-xl p-6">
         <h2 className="text-3xl font-bold mb-6 text-center text-indigo-700">
-          📝 Todo List (Buggy Demo)
+          📝 Todo List
         </h2>
 
         <div className="flex gap-3 mb-6">
