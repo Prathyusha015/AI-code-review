@@ -1,0 +1,39 @@
+name: Upload Jest Coverage to CodeAnt AI
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Tests with Coverage
+        run: npm run test:ci
+
+      # - name: Upload Coverage to CodeAnt AI
+      #   uses: CodeAnt-AI/codeant-coverage-action@v0.0.1
+      #   with:
+      #     access_token: ${{ secrets.CODEANT_ACCESS_TOKEN }}
+      #     coverage_file: coverage/cobertura-coverage.xml
+      
+      - name: Display Coverage Files
+        run: |
+          echo "Coverage files generated:"
+          ls -la coverage/
+          echo "Upload cobertura-coverage.xml to CodeAnt AI manually"
